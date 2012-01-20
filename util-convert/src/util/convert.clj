@@ -14,4 +14,10 @@
   {:pre [(string? stringified-float)]}
   (Float/parseFloat stringified-float))
 
+(defn string->bool
+  "Convert a string of yes to boolean true, and a string of no to boolean false"
+  [yes-or-no-string]
+  (cond
+   (= yes-or-no-string "yes") true
+   (= yes-or-no-string "no")  false))
 

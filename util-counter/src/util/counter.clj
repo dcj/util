@@ -14,6 +14,24 @@
 ;;      :reset     #(dosync (alter count zero))
 ;;      :get-value #(deref count)}))
 
+;; (defn counter-dispatch
+;;   "Returns dispatch keyword for new counter multimethods"
+;;   [arg]
+;;   (if (vector? arg)
+;;     ::vector
+;;     ::keyword))
+
+;; (defmulti new counter-dispatch)
+
+;; (defmethod new ::keyword [name]
+;;   {:pre [(keyword? name)]}
+;;   (when *persistent-counters*
+;;     (dosync (commute *persistent-counters* assoc name 0))))
+
+;; (defmethod new ::vector [names]
+;;   (doseq [counter names]
+;;     (new ::keyword counter)))
+  
 (defn new-counter
   "Creates a new counter in *persistent-counters*"
   [name]
