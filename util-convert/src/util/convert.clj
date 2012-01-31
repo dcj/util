@@ -5,7 +5,8 @@
 (defn string->uuid
   "Convert a string to a UUID"
   [stringified-uuid]
-  {:pre [(string? stringified-uuid)]}
+  {:pre  [(string? stringified-uuid)]
+   :post [(= (type %) java.util.UUID)]}
   (. UUID (fromString stringified-uuid)))
 
 (defn string->float
@@ -20,4 +21,10 @@
   (cond
    (= yes-or-no-string "yes") true
    (= yes-or-no-string "no")  false))
+
+(defn uuid->string
+  [uuid]
+  (.toString uuid))
+
+
 
