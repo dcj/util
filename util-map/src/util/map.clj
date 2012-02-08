@@ -89,3 +89,26 @@
         acc))))
 
 
+;; Taken from:  http://groups.google.com/group/clojure/msg/3d2df2067080a52a?hl=en
+
+(defmacro def-fields [struct-name & fields]
+  (let [field-symbol-vector (->> fields (map name) (map symbol) vec)
+        arg (gensym)
+        body (gensym)
+        macro-name (symbol (str "let-" struct-name))]
+    `(defmacro ~macro-name [~arg & ~body]
+      `(let [{:keys ~'~field-symbol-vector} ~~arg] ~@~body))))
+    
+;; ; How to use it.
+
+;; (def-fields person :first-name :last-name :city)
+
+;; (defn print-person [p]
+;;   (let-person p
+;;     (println "First name:" first-name)
+;;     (println "Last name:" last-name)
+;;     (println "City:" city)))
+
+;; (def person1 {:first-name "John" :last-name "Smith" :city "San Francisco"})
+;; (print-person person1)
+
