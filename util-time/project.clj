@@ -1,4 +1,4 @@
-(defproject com.dcj/util/util-time "1.0.0-SNAPSHOT"
+(defproject com.dcj.util/util-time "1.0.0-SNAPSHOT"
 
   :description "Time utilities"
 

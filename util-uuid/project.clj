@@ -1,4 +1,4 @@
-(defproject com.dcj/util/util-uuid "1.0.0-SNAPSHOT"
+(defproject com.dcj.util/util-uuid "1.0.0-SNAPSHOT"
 
   :description "UUID utilities"
 
