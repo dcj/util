@@ -2,18 +2,22 @@
   
   :description "Libraries of functions I like to use"
 
-  :dependencies [[com.dcj/util/util-map "1.0.0-SNAPSHOT"]
-                 [com.dcj/util/util-convert "1.0.0-SNAPSHOT"]
-                 [com.dcj/util/util-phonenumber "1.0.0-SNAPSHOT"]
-                 [com.dcj/util/util-puppet "1.0.0-SNAPSHOT"]                 
-                 [com.dcj/util/util-counter "1.0.0-SNAPSHOT"]
-                 [com.dcj/util/util-configfile "1.0.0-SNAPSHOT"]                 
-                 [com.dcj/util/util-time "1.0.0-SNAPSHOT"]
+  :repositories {"likestream" "http://maven.likestream.net/maven2/"}  
+
+  :dependencies [
+                 [com.dcj.util/util-map "1.0.0-SNAPSHOT"]
+                 [com.dcj.util/util-convert "1.0.0-SNAPSHOT"]
+                 [com.dcj.util/util-phonenumber "1.0.0-SNAPSHOT"]
+                 [com.dcj.util/util-puppet "1.0.0-SNAPSHOT"]                 
+                 [com.dcj.util/util-counter "1.0.0-SNAPSHOT"]
+                 [com.dcj.util/util-configfile "1.0.0-SNAPSHOT"]                 
+                 [com.dcj.util/util-time "1.0.0-SNAPSHOT"]
                  ]
 
-  :dev-dependencies [[lein-sub "0.1.2"]
-                     [codox "0.3.3"]
-                     [lein-marginalia "0.6.0"]
+  :dev-dependencies [
+                     [lein-sub "0.1.2"]
+                     [codox "0.4.0"]
+                     [lein-marginalia "0.6.1"]
                      ]
 
   :sub ["util-map"
