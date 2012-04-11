@@ -39,6 +39,9 @@
         (name x)
         (str x)))))
 
+(defn nilify-blanks [input]
+  (when (seq input) input))
+
 ;; TODO anyplace the below us used, needs to be fixed
 (defn ensure-string-id [id]
   (let [id-type (type id)]
