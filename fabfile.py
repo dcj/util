@@ -23,6 +23,12 @@ def deploy():
     put('util-counter/util-counter-1.0.0-SNAPSHOT.jar', '/home2/maven/maven2/com/dcj/util/util-counter/1.0.0-SNAPSHOT', use_sudo=True)
     put('util-counter/pom.xml', '/home2/maven/maven2/com/dcj/util/util-counter/1.0.0-SNAPSHOT/util-counter-1.0.0-SNAPSHOT.pom', use_sudo=True)
 
+    sudo('rm -f /home2/maven/maven2/com/dcj/util/util-logging/1.0.0-SNAPSHOT/util-logging-1.0.0-SNAPSHOT.jar')
+    sudo('rm -f /home2/maven/maven2/com/dcj/util/util-logging/1.0.0-SNAPSHOT/util-logging-1.0.0-SNAPSHOT.pom')    
+    sudo('mkdir -p /home2/maven/maven2/com/dcj/util/util-logging/1.0.0-SNAPSHOT')
+    put('util-logging/util-logging-1.0.0-SNAPSHOT.jar', '/home2/maven/maven2/com/dcj/util/util-logging/1.0.0-SNAPSHOT', use_sudo=True)
+    put('util-logging/pom.xml', '/home2/maven/maven2/com/dcj/util/util-logging/1.0.0-SNAPSHOT/util-logging-1.0.0-SNAPSHOT.pom', use_sudo=True)
+
     sudo('rm -f /home2/maven/maven2/com/dcj/util/util-map/1.0.0-SNAPSHOT/util-map-1.0.0-SNAPSHOT.jar')
     sudo('rm -f /home2/maven/maven2/com/dcj/util/util-map/1.0.0-SNAPSHOT/util-map-1.0.0-SNAPSHOT.pom')    
     sudo('mkdir -p /home2/maven/maven2/com/dcj/util/util-map/1.0.0-SNAPSHOT')

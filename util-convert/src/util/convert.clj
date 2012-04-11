@@ -26,5 +26,33 @@
   [uuid]
   (.toString uuid))
 
+(defn long->string
+  [long]
+  (.toString long))
+
+;; From relevence.utils - still necessary?
+(defn #^String safe-str [x]
+  (when x
+    (if (string? x)
+      x
+      (if (instance? clojure.lang.Named x)
+        (name x)
+        (str x)))))
+
+;; TODO anyplace the below us used, needs to be fixed
+(defn ensure-string-id [id]
+  (let [id-type (type id)]
+    (if (or (= java.lang.Long id-type)
+            (= java.lang.Integer id-type))
+      (.toString id)
+      id)))
+
+;; TODO anyplace the below us used, needs to be fixed
+(defn ensure-string-uuid [uuid]
+  (if (= java.util.UUID (type uuid))
+    (.toString uuid)
+    uuid))
+
+
 
 

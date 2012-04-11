@@ -7,6 +7,7 @@
   :dependencies [
                  [com.dcj.util/util-map "1.0.0-SNAPSHOT"]
                  [com.dcj.util/util-convert "1.0.0-SNAPSHOT"]
+                 [com.dcj.util/util-logging "1.0.0-SNAPSHOT"]
                  [com.dcj.util/util-phonenumber "1.0.0-SNAPSHOT"]
                  [com.dcj.util/util-puppet "1.0.0-SNAPSHOT"]                 
                  [com.dcj.util/util-counter "1.0.0-SNAPSHOT"]
@@ -22,7 +23,7 @@
 
   :sub ["util-map"
         "util-convert"
-        "util-phonenumber"
+        "util-logging"
         "util-puppet"        
         "util-counter"
         "util-configfile"
@@ -32,6 +33,7 @@
 
   :codox {:sources ["util-map/src"
                     "util-convert/src"
+                    "util-logging/src"
                     "util-phonenumber/src"
                     "util-puppet/src"                    
                     "util-counter/src"

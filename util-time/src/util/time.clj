@@ -14,6 +14,15 @@
   []
   (java.sql.Timestamp. (.getTime (java.util.Date.))))
 
+(defn date->string
+  "Converts java.util.Date to a string"
+  [date]
+  (.toString date))
+
+(defn string->date
+  "Converts a string to java.util.Date"
+  [string]
+  (Date. string))
 
 
 
