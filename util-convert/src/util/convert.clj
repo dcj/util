@@ -7,7 +7,7 @@
   [stringified-uuid]
   {:pre  [(string? stringified-uuid)]
    :post [(= (type %) java.util.UUID)]}
-  (. UUID (fromString stringified-uuid)))
+  (UUID/fromString stringified-uuid))
 
 (defn string->float
   "Convert a string to a Float"

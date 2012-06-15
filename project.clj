@@ -1,30 +1,32 @@
-(defproject com.dcj/util "1.0.0-SNAPSHOT"
+(defproject com.dcj/util "1.0.1-SNAPSHOT"
   
   :description "Libraries of functions I like to use"
 
-  :repositories {"likestream" "http://maven.likestream.net/maven2/"}  
+  :min-lein-version "2.0.0"
 
+  :repositories {"mvnrepository" "http://mvnrepository.com/"
+                 "likestream" 
+                 {:url "http://maven.likestream.net/maven2"
+                  :update :always
+                  :checksum :ignore }
+                 }
+                 
   :dependencies [
-                 [com.dcj.util/util-map "1.0.0-SNAPSHOT"]
-                 [com.dcj.util/util-convert "1.0.0-SNAPSHOT"]
-                 [com.dcj.util/util-logging "1.0.0-SNAPSHOT"]
-                 [com.dcj.util/util-phonenumber "1.0.0-SNAPSHOT"]
-                 [com.dcj.util/util-puppet "1.0.0-SNAPSHOT"]                 
-                 [com.dcj.util/util-counter "1.0.0-SNAPSHOT"]
-                 [com.dcj.util/util-configfile "1.0.0-SNAPSHOT"]                 
-                 [com.dcj.util/util-time "1.0.0-SNAPSHOT"]
+                 [com.dcj.util/util-map "1.0.1-SNAPSHOT"]
+                 [com.dcj.util/util-convert "1.0.1-SNAPSHOT"]
+                 [com.dcj.util/util-logging "1.0.1-SNAPSHOT"]
+                 [com.dcj.util/util-phonenumber "1.0.1-SNAPSHOT"]
+                 [com.dcj.util/util-puppet "1.0.1-SNAPSHOT"]                 
+                 [com.dcj.util/util-counter "1.0.1-SNAPSHOT"]
+                 [com.dcj.util/util-configfile "1.0.1-SNAPSHOT"]                 
+                 [com.dcj.util/util-time "1.0.1-SNAPSHOT"]
                  ]
-
-  :dev-dependencies [
-                     [lein-sub "0.1.2"]
-                     [codox "0.4.0"]
-                     [lein-marginalia "0.6.1"]
-                     ]
 
   :sub ["util-map"
         "util-convert"
         "util-logging"
-        "util-puppet"        
+        "util-puppet"
+        "util-phonenumber"
         "util-counter"
         "util-configfile"
         "util-time"
@@ -40,4 +42,10 @@
                     "util-configfile/src"
                     "util-time/src"
                     "util-uuid/src"                    
-                    ]})
+                    ]
+           :output-dir "docs/codox"
+          }
+
+  :control {:control-file "deploy.clj"}
+
+  )

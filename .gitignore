@@ -9,3 +9,7 @@
 /doc
 /.DS_Store
 *.pyc
+target
+/docs
+
+

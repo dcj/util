@@ -1,7 +1,8 @@
 (ns util.counter
   "Persistent counter")
 
-(def ^{:private true} *persistent-counters* (ref {}))
+(def ^{:private true
+       :dynamic true} *persistent-counters* (ref {}))
 
 ;; TODO:  Is commute the correct thing for counters below, or should I be using alter?
 ;; TODO: Do we need delete-counter ?

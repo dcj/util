@@ -1,8 +1,9 @@
 (ns util.configfile
   "Maintain and read application configuration information"
-  (:use [clojure.contrib.logging :only [log]]))
+  (:require [clojure.tools.logging :as log]))
 
-(def ^{:private true} *config* (ref nil))
+(def ^{:private true
+       :dynamic true} *config* (ref nil))
 
 (defn load-config [p]
   (binding [*read-eval* false]
@@ -18,7 +19,7 @@
      (let [read-config (load-config p)]
        (dosync
         (ref-set *config* read-config))
-       (log :info (str "Config is " (prn-str read-config))))))
+       (log/log :info (str "Config is " (prn-str read-config))))))
 
 (defn config []
   (or @*config*
@@ -48,18 +49,18 @@
   [{:keys [env-variable file-name]}]
   {:pre [(or (not (nil? env-variable))
              (not (nil? file-name)))]}
-  (log :info "Running initial setup.")
+  (log/log :info "Running initial setup.")
   (when-not (configured?)
     ;; If not set, will fall back to the default location.
     (if-let [env-var-val (System/getenv env-variable)]
       (do
-        (log :info (str "Loading config from " env-var-val))
+        (log/log :info (str "Loading config from " env-var-val))
         (load-config! env-var-val))
       (try
-        (log :info (str "Loading config from " file-name))
+        (log/log :info (str "Loading config from " file-name))
         (load-config! file-name)
         (catch Throwable e
-          (log :fatal "Couldn't load config from environment variable nor hardwired config file. Dying.")
+          (log/log :fatal "Couldn't load config from environment variable nor hardwired config file. Dying.")
           (System/exit 1))))))
 
 

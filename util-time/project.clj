@@ -1,9 +1,9 @@
-(defproject com.dcj.util/util-time "1.0.0-SNAPSHOT"
+(defproject com.dcj.util/util-time "1.0.1-SNAPSHOT"
 
   :description "Time utilities"
 
-  :dependencies [[org.clojure/clojure "1.2.1"]
-		 [clj-time "0.3.4"]		 
+  :dependencies [[org.clojure/clojure "1.4.0"]
+                 [clj-time "0.4.2"]    
                  ])
 
 

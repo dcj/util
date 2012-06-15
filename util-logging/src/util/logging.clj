@@ -1,6 +1,6 @@
 (ns util.logging
   "Logging utilities"
-  (use [clojure.tools.logging :only [log]]))
+  (:require [clojure.tools.logging :as log]))
 
 (defn #^String msecs
   ([duration]
@@ -19,6 +19,6 @@
 
 (defmacro time-call [s call]
   `(with-duration [d# r# ~call]
-     (clojure.tools.logging/log :info (str ~s (msecs d#)))
+     (log/log :info (str ~s (msecs d#)))
      r#))
 
