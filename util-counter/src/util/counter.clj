@@ -34,21 +34,21 @@
 ;;     (new ::keyword counter)))
   
 (defn new-counter
-  "Creates a new counter in *persistent-counters*"
+  "Creates a new counter"
   [name]
   {:pre [(keyword? name)]}
   (when *persistent-counters*
     (dosync (commute *persistent-counters* assoc name 0))))
 
 (defn new-counters
-  "Creates new counters in *persistent-counters*"
+  "Creates new counters"
   [names]
   {:pre [(vector? names)]}
   (doseq [counter names]
     (new-counter counter)))
 
 (defn inc-counter
-  "Increments the named counter in *persistent-counters*, a ref to a map."
+  "Increments the named counter"
   [name]
   {:pre [(keyword? name)]}
   (when  *persistent-counters*
@@ -56,21 +56,37 @@
                      (inc (or (*persistent-counters* name) 0))))))
 
 (defn get-counter
-  "Returns value of the named counter in *persistent-counters*, a ref to a map."
+  "Returns value of the named counter."
   [name]
   {:pre [(keyword? name)]}
   (when  *persistent-counters*
     (get (deref *persistent-counters*) name)))
 
 (defn get-counters-map
-  "Returns the value of the *persistent-counters*, a ref, a map"
+  "Returns a map containing all counters and their values"
   []
   (when  *persistent-counters*
     (deref *persistent-counters*)))
 
 ;;  TODO: AFAIK reset-counter is the same as new-counter, so just calling that for now....
 (defn reset-counter
-  "Sets to zero the value of named counter in *persistent-counters*"
+  "Zeros the value of named counter"
   [name]
   (new-counter name))
+
+(defn reset-counters
+  "Zeros all specified counters, if no seq of counters provided, resets ALL previously defined counters"
+  ([]
+     (reset-counters (keys (get-counters-map))))
+  ([names]
+     {:pre [(seq? names)]}
+     (doseq [counter names]
+       (reset-counter counter))))
+
+(defn nuke-all!
+  "Destroys all counters, resets the ref to the empty map"
+  []
+  (dosync (ref-set *persistent-counters* (ref {}))))
+
+
 

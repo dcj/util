@@ -46,6 +46,4 @@
            :output-dir "docs/codox"
           }
 
-  :control {:control-file "deploy.clj"}
-
   )
