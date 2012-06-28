@@ -88,6 +88,22 @@
                (update-in acc [current-key] (get keys-and-value-funcs current-key)))
         acc))))
 
+(defn assoc!-when
+  "Like assoc!, but skips keys with null values."
+  ([m k v]
+    (if (nil? v)
+      m
+      (assoc! m k v)))
+  ([m k v & kvs]
+     (if k
+       (apply assoc!-when
+              (assoc!-when m k v)
+              kvs)
+       m)))
+
+(defn assoc-when
+  [m & args]
+  (persistent! (apply assoc!-when (transient m) args)))
 
 ;; Taken from:  http://groups.google.com/group/clojure/msg/3d2df2067080a52a?hl=en
 
