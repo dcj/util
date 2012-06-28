@@ -1,4 +1,4 @@
-(defproject com.dcj/util "1.0.1-SNAPSHOT"
+(defproject com.dcj/util "1.0.2-SNAPSHOT"
   
   :description "Libraries of functions I like to use"
 
@@ -12,14 +12,14 @@
                  }
                  
   :dependencies [
-                 [com.dcj.util/util-map "1.0.1-SNAPSHOT"]
-                 [com.dcj.util/util-convert "1.0.1-SNAPSHOT"]
-                 [com.dcj.util/util-logging "1.0.1-SNAPSHOT"]
-                 [com.dcj.util/util-phonenumber "1.0.1-SNAPSHOT"]
-                 [com.dcj.util/util-puppet "1.0.1-SNAPSHOT"]                 
-                 [com.dcj.util/util-counter "1.0.1-SNAPSHOT"]
-                 [com.dcj.util/util-configfile "1.0.1-SNAPSHOT"]                 
-                 [com.dcj.util/util-time "1.0.1-SNAPSHOT"]
+                 [com.dcj.util/util-map "1.0.2-SNAPSHOT"]
+                 [com.dcj.util/util-convert "1.0.2-SNAPSHOT"]
+                 [com.dcj.util/util-logging "1.0.2-SNAPSHOT"]
+                 [com.dcj.util/util-phonenumber "1.0.2-SNAPSHOT"]
+                 [com.dcj.util/util-puppet "1.0.2-SNAPSHOT"]                 
+                 [com.dcj.util/util-counter "1.0.2-SNAPSHOT"]
+                 [com.dcj.util/util-configfile "1.0.2-SNAPSHOT"]                 
+                 [com.dcj.util/util-time "1.0.2-SNAPSHOT"]
                  ]
 
   :sub ["util-map"

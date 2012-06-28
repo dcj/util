@@ -1,7 +1,7 @@
 (ns util.uuid
   "Utilities for dealing with UUIDs"
   (:import [java.util UUID]
-                                        ;           [com.eaio.uuid UUID]
+;          [com.eaio.uuid UUID]
            ))
 
 ;; http://johannburkard.de/software/uuid/#maven
