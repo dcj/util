@@ -1,5 +1,6 @@
 (ns util.phonenumber
   "Utility functions for manipulating telephone numbers, from Richard Newman"
+  (:require [util.map :as maputil])
   (:use util.phonenumber.e164))
 
 ;; TODO: provide a higher-level interface that accepts countries or
@@ -8,22 +9,6 @@
 ;;;
 ;;; Utilities.
 ;;;
-
-(defn- assoc!-when
-  "Like assoc!, but skips keys with null values."
-  ([m k v]
-    (if (nil? v)
-      m
-      (assoc! m k v)))
-  ([m k v & kvs]
-     (if k
-       (apply assoc!-when
-              (assoc!-when m k v)
-              kvs)
-       m)))
-
-(defn- assoc-when [m & args]
-  (persistent! (apply assoc!-when (transient m) args)))
 
 (defn- #^String skip-re
   "Skip the first part of `str` if it matches `re`."
@@ -114,11 +99,11 @@
             (extract-cc cc-str prefix-str)
             [default-cc prefix-str])]
       (when cc
-        (assoc-when {:cc cc}
-                    :x ext-str
-                    :number (clean-number-str num-str)
-                    :prefix (or remaining-number
-                                prefix-str))))
+        (maputil/assoc-when {:cc cc}
+                            :x ext-str
+                            :number (clean-number-str num-str)
+                            :prefix (or remaining-number
+                                        prefix-str))))
                
     (let [left-over (or prefix-str num-str)]
       (let [[cc remaining-number]
@@ -129,10 +114,10 @@
           (let [[prefix remainder]
                 (skip-and-prefix cc (clean-number-str
                                      remaining-number))]
-            (assoc-when {:cc cc}
-                        :x ext-str
-                        :number remainder
-                        :prefix prefix)))))))
+            (maputil/assoc-when {:cc cc}
+                                :x ext-str
+                                :number remainder
+                                :prefix prefix)))))))
 
 
 (defn normalize-phone

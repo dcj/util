@@ -1,6 +1,5 @@
 (ns util.time
   "Utilities for dealing with time"
-;;  (:use 'clj-time.core)
   (:import [java.util Date]
            [java.sql Timestamp]))
 
