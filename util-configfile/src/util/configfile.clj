@@ -32,8 +32,8 @@
      (if-let [read-config (read-config-file filename)]
        (do
          (dosync (ref-set *config* read-config))
-         (log/log :info (str "Configuation read from: " filename ", contents as follows:"))
-         (log/log :info (pr-str read-config))
+         (log/log :info (str "Configuation read from: " filename ", contents as follows:\n" (write read-config :stream nil)))
+;;         (log/log :info (pr-str read-config))
          read-config))))
 
 (defn get-config 
