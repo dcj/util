@@ -2,12 +2,13 @@
 
   :description "UUID utilities"
 
-  :dependencies [[org.clojure/clojure "1.4.0"]
-;;		 [com.eaio.uuid/uuid "3.2"]
+  :dependencies [
+                 [org.clojure/clojure "1.4.0"]
+                 [slingshot "0.10.3"]
                  ])
 
 
-
+;;		 [com.eaio.uuid/uuid "3.2"]
 
 
 
