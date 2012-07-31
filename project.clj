@@ -20,6 +20,7 @@
                  [com.dcj.util/util-counter "1.0.2-SNAPSHOT"]
                  [com.dcj.util/util-configfile "1.0.2-SNAPSHOT"]                 
                  [com.dcj.util/util-time "1.0.2-SNAPSHOT"]
+                 [com.dcj.util/util-http "1.0.2-SNAPSHOT"]                 
                  ]
 
   :sub ["util-map"
@@ -30,7 +31,8 @@
         "util-counter"
         "util-configfile"
         "util-time"
-        "util-uuid"        
+        "util-uuid"
+        "util-http"                
         ]
 
   :codox {:sources ["util-map/src"
@@ -41,7 +43,8 @@
                     "util-counter/src"
                     "util-configfile/src"
                     "util-time/src"
-                    "util-uuid/src"                    
+                    "util-uuid/src"
+                    "util-http/src"                                        
                     ]
            :output-dir "docs/codox"
           }

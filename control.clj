@@ -25,6 +25,7 @@
   (call :deploy-to-maven "com/dcj" "util" "util-configfile"  version)
   (call :deploy-to-maven "com/dcj" "util" "util-time"        version)
   (call :deploy-to-maven "com/dcj" "util" "util-uuid"        version)
+  (call :deploy-to-maven "com/dcj" "util" "util-http"        version)
   (call :deploy-to-maven "com/dcj" ""     "util"             version))
 
 
