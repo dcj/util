@@ -1,5 +1,8 @@
 (ns util.convert
   "Type conversion utilities"
+  (:use [slingshot.slingshot :only [throw+ try+]])
+  (:require [clojure.string :as str]
+            [util.uuid :as uuid])
   (:import [java.util UUID]))
 
 (defn string->uuid
@@ -55,6 +58,41 @@
   (if (= java.util.UUID (type uuid))
     (.toString uuid)
     uuid))
+
+(defn- all-digit-string?
+  [istring]
+  (empty? (drop-while #(Character/isDigit %)
+                      (seq istring))))  ;; all characters are digits, but must follow blank?
+
+(defmulti carefully-to
+  (fn [target-key &rest]
+    target-key))
+
+(defmethod carefully-to :Integer
+  [_ thing-to-convert]
+  (cond
+   (integer? thing-to-convert) (int thing-to-convert)
+   (string? thing-to-convert) (when (and (not (str/blank? thing-to-convert))
+                                         (all-digit-string? thing-to-convert))
+                                (try+
+                                 (Integer/parseInt thing-to-convert)
+                                 (catch java.lang.NumberFormatException _ nil)))))
+
+(defmethod carefully-to :Long
+  [_ thing-to-convert]
+  (cond
+   (integer? thing-to-convert) (long thing-to-convert)
+   (string? thing-to-convert) (when (and (not (str/blank? thing-to-convert))
+                                         (all-digit-string? thing-to-convert))
+                                (try+
+                                 (Long/parseLong thing-to-convert)
+                                 (catch java.lang.NumberFormatException _ nil)))))
+
+(defmethod carefully-to :UUID
+  [_ thing-to-convert]
+  (cond
+   (uuid/is? thing-to-convert) thing-to-convert
+   (string? thing-to-convert) (uuid/<-string :validate thing-to-convert)))
 
 
 
