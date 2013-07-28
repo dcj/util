@@ -1,4 +1,4 @@
-(defproject com.dcj.util/util-phonenumber "1.0.2-SNAPSHOT"
+(defproject com.dcj.util/util-phonenumber "1.0.2"
   
   :description "Utilities for manipulating telephone numbers"
 
@@ -8,6 +8,6 @@
                   :checksum :ignore }
                  }
   
-  :dependencies [[org.clojure/clojure "1.4.0"]
-                 [com.dcj.util/util-map "1.0.2-SNAPSHOT"]])
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [com.dcj.util/util-map "1.0.2"]])
 

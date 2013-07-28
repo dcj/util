@@ -10,7 +10,9 @@
                   :update :always
                   :checksum :ignore }
                  }
-                 
+  
+  :extra-files-to-clean ["pom.xml" "lib"]                 
+  
   :dependencies [
                  [com.dcj.util/util-map "1.0.2-SNAPSHOT"]
                  [com.dcj.util/util-convert "1.0.2-SNAPSHOT"]
@@ -21,32 +23,44 @@
                  [com.dcj.util/util-configfile "1.0.2-SNAPSHOT"]                 
                  [com.dcj.util/util-time "1.0.2-SNAPSHOT"]
                  [com.dcj.util/util-http "1.0.2-SNAPSHOT"]                 
+                 [com.dcj.util/util-debug "1.0.2-SNAPSHOT"]                 
+                 [com.dcj.util/util-introspect "1.0.2-SNAPSHOT"]                 
+                 [com.dcj.util/util-clojure "1.0.2-SNAPSHOT"]                 
                  ]
 
-  :sub ["util-map"
-        "util-convert"
-        "util-logging"
-        "util-puppet"
-        "util-phonenumber"
-        "util-counter"
+  :sub [
+        "util-clojure"
         "util-configfile"
+        "util-convert"
+        "util-counter"
+        "util-debug"
+        "util-http"
+        "util-introspect"
+        "util-logging"
+        "util-map"
+        "util-phonenumber"
+        "util-puppet"
         "util-time"
         "util-uuid"
-        "util-http"                
         ]
 
-  :codox {:sources ["util-map/src"
-                    "util-convert/src"
-                    "util-logging/src"
-                    "util-phonenumber/src"
-                    "util-puppet/src"                    
-                    "util-counter/src"
+  :codox {:sources [
+                    "util-clojure/src"
                     "util-configfile/src"
+                    "util-convert/src"
+                    "util-counter/src"
+                    "util-debug/src"
+                    "util-http/src"
+                    "util-introspect/src"
+                    "util-logging/src"
+                    "util-map/src"
+                    "util-phonenumber/src"
+                    "util-puppet/src"
                     "util-time/src"
                     "util-uuid/src"
-                    "util-http/src"                                        
                     ]
-           :output-dir "docs/codox"
-          }
 
+          :output-dir "docs/codox"
+          }
   )
+

@@ -88,6 +88,29 @@
                                  (Long/parseLong thing-to-convert)
                                  (catch java.lang.NumberFormatException _ nil)))))
 
+(defmethod carefully-to :Float
+  [_ thing-to-convert]
+  (cond
+   (float? thing-to-convert) (float thing-to-convert)
+   (string? thing-to-convert) (when (and (not (str/blank? thing-to-convert))
+                                         (all-digit-string? thing-to-convert))
+                                (try+
+                                 (Float/parseFloat thing-to-convert)
+                                 (catch java.lang.NumberFormatException _ nil)))))
+
+(defmethod carefully-to :Int-Float
+  [_ thing-to-convert]
+  (let [my-float (cond
+                  (float? thing-to-convert) (float thing-to-convert)
+                  (string? thing-to-convert) (when (and (not (str/blank? thing-to-convert))
+                                                        (all-digit-string? thing-to-convert))
+                                               (try+
+                                                (Float/parseFloat thing-to-convert)
+                                                (catch java.lang.NumberFormatException _ nil))))]
+    (when my-float
+     (int my-float))))
+    
+
 (defmethod carefully-to :UUID
   [_ thing-to-convert]
   (cond

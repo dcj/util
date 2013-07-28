@@ -11,11 +11,14 @@
     (ssh (str "rm -f /home2/maven/maven2/" org-slash-base "/" name "/" version "/" name "-" version ".jar") :sudo true)
     (ssh (str "rm -f /home2/maven/maven2/" org-slash-base "/" name "/" version "/" name "-" version ".pom") :sudo true)
     (ssh (str "mkdir -p /home2/maven/maven2/" org-slash-base "/" name "/" version) :sudo true)
-    (scp (str target-pom-prefix "/target/" name "-" version ".jar") (str "/home2/maven/maven2/" org-slash-base "/" name "/" version) :sudo true)
+    (scp (str target-pom-prefix "/target/provided/" name "-" version ".jar") (str "/home2/maven/maven2/" org-slash-base "/" name "/" version) :sudo true)
     (scp (str target-pom-prefix "/pom.xml") (str "/home2/maven/maven2/" org-slash-base "/" name "/" version "/" name "-" version ".pom") :sudo true)
     (ssh (str "chown -R maven:daemon /home2/maven/maven2/" org-slash-base "/" name) :sudo true)))
 
 (deftask :deploy "Deploy all libs to maven repo" [version]
+  (call :deploy-to-maven "com/dcj" "util" "util-introspect"  version)
+  (call :deploy-to-maven "com/dcj" "util" "util-clojure"     version)
+  (call :deploy-to-maven "com/dcj" "util" "util-debug"       version)
   (call :deploy-to-maven "com/dcj" "util" "util-map"         version)
   (call :deploy-to-maven "com/dcj" "util" "util-convert"     version)
   (call :deploy-to-maven "com/dcj" "util" "util-logging"     version)

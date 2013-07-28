@@ -105,6 +105,35 @@
   [m & args]
   (persistent! (apply assoc!-when (transient m) args)))
 
+(defn assoc-cons
+  "cons a value in under a key"
+  [map key val]
+  (assoc map key
+         (cons val (get map key))))
+
+;; TODO:  Either this is awesome, and should be a general utility, or I should figure out how not to create these kind of hash-maps in the first place...
+;; http://stackoverflow.com/questions/3937661/remove-nil-values-from-a-map
+;; TODO use reduce-kv and assoc-when?
+
+(defn remove-nil-vals-from-map
+  [input-map]
+  "Looks at a hash-map, and returns a hash-map that doesn't contain the key-value pair where value is nil"
+  (apply dissoc
+         input-map
+         (for [[k v] input-map :when (nil? v)] k)))
+
+(defn map-by-selectors [records key-fn val-fn]
+  (reduce (fn [accum record]
+            (let [key (key-fn record)
+                  val (val-fn record)]
+              (assoc accum key val))) {} records))
+
+(defn group-by-selectors [records key-fn val-fn]
+  (reduce (fn [accum record]
+            (let [key (key-fn record)
+                  val (val-fn record)]
+              (assoc-cons accum key val))) {} records))
+
 ;; Taken from:  http://groups.google.com/group/clojure/msg/3d2df2067080a52a?hl=en
 
 (defmacro def-fields [struct-name & fields]
@@ -127,4 +156,37 @@
 
 ;; (def person1 {:first-name "John" :last-name "Smith" :city "San Francisco"})
 ;; (print-person person1)
+
+(defn transform
+  "Returns dmap transformed/converted according to the cmap, example cmap:
+    {:id {:db-col :id_fb_user :xlate-fn (partial convert/carefully-to :Long)}
+     :name {:db-col :name :xlate-fn identity}
+     :first_name {:db-col :first_name :xlate-fn identity}}"
+  [cmap dmap]
+  (letfn [(process-translation [{:keys [db-col xlate-fn]} item-to-xlate]
+            {db-col (xlate-fn item-to-xlate)})]
+    (reduce-kv (fn [result data-key data-value]
+                 (if-let [xlate-spec (get cmap data-key)]
+                   (if (vector? xlate-spec)
+                     (apply merge
+                            (cons result
+                                  (map #(process-translation % data-value)
+                                       xlate-spec)))
+                     (merge result (process-translation xlate-spec data-value)))
+                   result))
+               {}
+               dmap)))
+
+(defn format-map
+  "Returns dmap formatted/converted according to the cmap, example cmap:
+    {:id-fb-user {:key :id         :fn (partial convert/carefully-to :Long)}
+     :name       {:key :name       :fn identity}
+     :first_name {:key :name_first :fn identity}}"
+  [cmap dmap]
+  (letfn [(process-format
+            [[output-key {:keys [key fn]}]]
+            [output-key (fn (get dmap key))])]
+    (->> (seq cmap)
+         (map process-format)
+         (into {}))))
 
