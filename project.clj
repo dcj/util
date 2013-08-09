@@ -15,7 +15,8 @@
   
   :dependencies [
                  [com.dcj.util/util-map "1.0.2-SNAPSHOT"]
-                 [com.dcj.util/util-convert "1.0.2-SNAPSHOT"]
+                 [com.dcj.util/util-convert "1.0.3-SNAPSHOT"]
+                 [com.dcj.util/util-ddl "1.0.3-SNAPSHOT"]
                  [com.dcj.util/util-logging "1.0.2-SNAPSHOT"]
                  [com.dcj.util/util-phonenumber "1.0.2-SNAPSHOT"]
                  [com.dcj.util/util-puppet "1.0.2-SNAPSHOT"]                 
@@ -32,6 +33,7 @@
         "util-clojure"
         "util-configfile"
         "util-convert"
+        "util-ddl"
         "util-counter"
         "util-debug"
         "util-http"
@@ -48,6 +50,7 @@
                     "util-clojure/src"
                     "util-configfile/src"
                     "util-convert/src"
+                    "util-ddl/src"
                     "util-counter/src"
                     "util-debug/src"
                     "util-http/src"
