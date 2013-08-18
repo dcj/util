@@ -129,17 +129,28 @@
 (defn vectorize-string
   "Returns vector of input string substrings split by comma"
   [string]
-  (when string
-    (into [] (clojure.string/split string #"\,"))))
+  (if string
+    (into [] (clojure.string/split string #"\,"))
+    []))
+
+(defn vectorize
+  "Returns (vec args), unless nil, then []"
+  [& args]
+  (if-not (or (empty? args)
+              (= '(nil) args))
+    (vec args)
+    []))
 
 (defn parse-json-string-into-vector
   "Returns parsed JSON input string into a Clojure vector"
   [json-string]
-  (when-let [parsed (json/parse-string json-string true)]
-    (cond 
-     (map? parsed) parsed
-     (seq? parsed) (into [] parsed)
-     :else (vector parsed))))
+  (if json-string
+    (when-let [parsed (json/parse-string json-string true)]
+      (cond 
+       (map? parsed) parsed
+       (seq? parsed) (into [] parsed)
+       :else (vector parsed)))
+    []))
 
 (defn keywordize-string
   "Returns keyword of given string, any spaces in string replaced with hyphens"
