@@ -15,7 +15,7 @@
                  [org.clojure/clojure "1.5.1"]
                  [slingshot "0.10.3"]
                  [com.dcj.util/uuid "1.0.4"]
-                 [cheshire "5.2.0"]
+                 [cheshire "5.3.1"]
                  ]
   )
 

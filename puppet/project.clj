@@ -3,7 +3,7 @@
   :clean-targets ["pom.xml"] 
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [clj-yaml "0.4.0"]
-		 [clj-ssh "0.5.6"]])
+		 [clj-ssh "0.5.7"]])
 
 
 
