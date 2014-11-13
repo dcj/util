@@ -2,7 +2,7 @@
   "Utilities for dealing with UUIDs"
   (:require [clojure.string :as str]
             [slingshot.slingshot :refer [throw+ try+]]
-            [datomic.api :as datomic]
+            ;; [datomic.api :as datomic]
             )
   (:import [java.util UUID])
   )
@@ -25,9 +25,10 @@
   ([uuid-type]
      (case uuid-type
        :random (UUID/randomUUID)
-       :squuid (datomic/squuid)
+;;       :squuid (datomic/squuid)
        (UUID/randomUUID))))
 
+#_
 (defn squuid
   "Datomic's squuid,
    Constructs a semi-sequential UUID. Useful for creating UUIDs
@@ -36,6 +37,7 @@
   []
   (datomic/squuid))
 
+#_
 (defn squuid-time-millis
   "get the time part of a squuid (a UUID created by squuid), in
    the format of System.currentTimeMillis"
