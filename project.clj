@@ -1,4 +1,4 @@
-(defproject com.dcj/util "1.0.2-SNAPSHOT"
+(defproject com.dcj/util "1.0.4"
   
   :description "Libraries of functions I like to use"
 
@@ -11,53 +11,60 @@
                   :checksum :ignore }
                  }
   
-  :extra-files-to-clean ["pom.xml" "lib"]                 
+  :extra-files-to-clean ["pom.xml"]                 
   
   :dependencies [
-                 [com.dcj.util/util-map "1.0.2-SNAPSHOT"]
-                 [com.dcj.util/util-convert "1.0.2-SNAPSHOT"]
-                 [com.dcj.util/util-logging "1.0.2-SNAPSHOT"]
-                 [com.dcj.util/util-phonenumber "1.0.2-SNAPSHOT"]
-                 [com.dcj.util/util-puppet "1.0.2-SNAPSHOT"]                 
-                 [com.dcj.util/util-counter "1.0.2-SNAPSHOT"]
-                 [com.dcj.util/util-configfile "1.0.2-SNAPSHOT"]                 
-                 [com.dcj.util/util-time "1.0.2-SNAPSHOT"]
-                 [com.dcj.util/util-http "1.0.2-SNAPSHOT"]                 
-                 [com.dcj.util/util-debug "1.0.2-SNAPSHOT"]                 
-                 [com.dcj.util/util-introspect "1.0.2-SNAPSHOT"]                 
-                 [com.dcj.util/util-clojure "1.0.2-SNAPSHOT"]                 
+                 [com.dcj.util/map "1.0.4"]
+                 [com.dcj.util/convert "1.0.4"]
+                 [com.dcj.util/uuid "1.0.4"]
+                 [com.dcj.util/ddl "1.0.4"]
+                 [com.dcj.util/logging "1.0.4"]
+                 [com.dcj.util/phonenumber "1.0.4"]
+                 [com.dcj.util/puppet "1.0.4"]                 
+                 [com.dcj.util/counter "1.0.4"]
+                 [com.dcj.util/ncounter "1.0.4"]
+                 [com.dcj.util/configfile "1.0.4"]                 
+                 [com.dcj.util/time "1.0.4"]
+                 [com.dcj.util/http "1.0.4"]                 
+                 [com.dcj.util/debug "1.0.4"]                 
+                 [com.dcj.util/introspect "1.0.4"]                 
+                 [com.dcj.util/clojure "1.0.4"]                 
                  ]
 
   :sub [
-        "util-clojure"
-        "util-configfile"
-        "util-convert"
-        "util-counter"
-        "util-debug"
-        "util-http"
-        "util-introspect"
-        "util-logging"
-        "util-map"
-        "util-phonenumber"
-        "util-puppet"
-        "util-time"
-        "util-uuid"
+        "clojure"
+        "configfile"
+        "convert"
+        "ddl"
+        "counter"
+        "ncounter"
+        "debug"
+        "http"
+        "introspect"
+        "logging"
+        "map"
+        "phonenumber"
+        "puppet"
+        "time"
+        "uuid"
         ]
 
   :codox {:sources [
-                    "util-clojure/src"
-                    "util-configfile/src"
-                    "util-convert/src"
-                    "util-counter/src"
-                    "util-debug/src"
-                    "util-http/src"
-                    "util-introspect/src"
-                    "util-logging/src"
-                    "util-map/src"
-                    "util-phonenumber/src"
-                    "util-puppet/src"
-                    "util-time/src"
-                    "util-uuid/src"
+                    "clojure/src"
+                    "configfile/src"
+                    "convert/src"
+                    "ddl/src"
+                    "counter/src"
+                    "ncounter/src"
+                    "debug/src"
+                    "http/src"
+                    "introspect/src"
+                    "logging/src"
+                    "map/src"
+                    "phonenumber/src"
+                    "puppet/src"
+                    "time/src"
+                    "uuid/src"
                     ]
 
           :output-dir "docs/codox"

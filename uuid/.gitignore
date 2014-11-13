@@ -6,11 +6,3 @@
 /.lein-failures
 /checkouts
 /.lein-deps-sum
-/doc
-/.DS_Store
-*.pyc
-target
-/docs
-*.lein-repl-history
-
-

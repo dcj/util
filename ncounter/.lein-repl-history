@@ -1,0 +1,49 @@
+(use 'util.counter)
+(use 'util.ncounter)
+(use 'util.ncounter :reload)
+(def c (create-container))
+(create c :tc)
+(inc c :tc)
+(get c)
+(get c :tc)
+(reset c)
+(defn reset
+  "Zeros all specified counters, if no seq of counters provided, resets ALL previously defined counters"
+  ([container]
+     (reset container (keys (get container))))
+  ([container name-or-names]
+     (cond 
+      (keyword? name-or-names) (create container name-or-names)
+      (vector? name-or-names) (doseq [counter name-or-names]
+                                (reset container counter)))))
+(ns util.ncounter)
+(defn reset
+  "Zeros all specified counters, if no seq of counters provided, resets ALL previously defined counters"
+  ([container]
+     (reset container (keys (get container))))
+  ([container name-or-names]
+     (cond 
+      (keyword? name-or-names) (create container name-or-names)
+      (vector? name-or-names) (doseq [counter name-or-names]
+                                (reset container counter)))))
+c
+(ns user)
+quit
+(use 'util.ncounter)
+(ns util.ncounter)
+(def c (create-container))
+(create c :tc)
+(inc c :tc)
+(util.ncounter/inc c :tc)
+quit
+(ns util.ncounter)
+(def c (create-container))
+(use 'util.ncounter)
+(def c (create-container))
+(create-container)
+(assoc [1 2] 3)
+(conj [1 2] 3)
+(def mt {:a [1 2]})
+(unpdate-in mt [:a] conj 3)
+(update-in mt [:a] conj 3)
+quit
