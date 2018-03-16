@@ -14,7 +14,7 @@
   :dependencies [
                  [org.clojure/clojure "1.9.0"]
                  [slingshot "0.12.2"]
-                 [com.dcj.util/uuid "1.0.4"]
+                 [com.dcj.util/uuid "1.0.5"]
                  [cheshire "5.8.0"]
                  ]
   )
