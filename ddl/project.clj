@@ -7,7 +7,7 @@
                   :checksum :ignore }
                  }
 
-  :clean-targets ["pom.xml"] 
+;;  :clean-targets ["pom.xml"] 
   
   :dependencies [
                  [org.clojure/clojure "1.5.1"]

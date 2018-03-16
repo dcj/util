@@ -2,7 +2,7 @@
   
   :description "Utilities for manipulating telephone numbers"
 
-  :clean-targets ["pom.xml"] 
+;;  :clean-targets ["pom.xml"] 
 
   :repositories {"likestream" 
                  {:url "http://maven.likestream.net/maven2"
