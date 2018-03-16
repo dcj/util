@@ -1,14 +1,14 @@
-(defproject com.dcj/util "1.0.4"
+(defproject com.dcj/util "1.0.5"
   
   :description "Libraries of functions I like to use"
 
   :min-lein-version "2.0.0"
 
   :repositories {"mvnrepository" "http://mvnrepository.com/"
-                 "likestream" 
-                 {:url "http://maven.likestream.net/maven2"
-                  :update :always
-                  :checksum :ignore }
+                 ;; "likestream" 
+                 ;; {:url "http://maven.likestream.net/maven2"
+                 ;;  :update :always
+                 ;;  :checksum :ignore }
                  }
   
 ;;  :extra-files-to-clean ["pom.xml"]                 
@@ -67,7 +67,7 @@
                     "uuid/src"
                     ]
 
-          :output-dir "docs/codox"
+          :output-dir "resources/docs/codox"
           }
   )
 
