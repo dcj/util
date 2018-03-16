@@ -146,3 +146,41 @@
    is true for items in coll."
   [pred coll]
   (for [[idx elt] (indexed coll) :when (pred elt)] idx))
+
+
+;; http://blog.juxt.pro/posts/condas.html
+
+(defmacro condas->
+  "A mixture of cond-> and as-> allowing more flexibility in the test and step forms"
+  [expr name & clauses]
+  (assert (even? (count clauses)))
+  (let [pstep (fn [[test step]] `(if ~test ~step ~name))]
+    `(let [~name ~expr
+           ~@(interleave (repeat name) (map pstep (partition 2 clauses)))]
+       ~name)))
+
+(defmacro condp->
+ "Takes an expression and a set of predicate/form pairs. Threads expr (via ->)
+ through each form for which the corresponding predicate is true of expr.
+ Note that, unlike cond branching, condp-> threading does not short circuit
+ after the first true test expression."
+ [expr & clauses]
+ (assert (even? (count clauses)))
+ (let [g (gensym)
+       pstep (fn [[pred step]] `(if (~pred ~g) (-> ~g ~step) ~g))]
+   `(let [~g ~expr
+          ~@(interleave (repeat g) (map pstep (partition 2 clauses)))]
+      ~g)))
+
+(defmacro condp->>
+  "Takes an expression and a set of predicate/form pairs. Threads expr (via ->>)
+  through each form for which the corresponding predicate is true of expr.
+  Note that, unlike cond branching, condp->> threading does not short circuit
+  after the first true test expression."
+  [expr & clauses]
+  (assert (even? (count clauses)))
+  (let [g (gensym)
+        pstep (fn [[pred step]] `(if (~pred ~g) (->> ~g ~step) ~g))]
+    `(let [~g ~expr
+           ~@(interleave (repeat g) (map pstep (partition 2 clauses)))]
+       ~g)))

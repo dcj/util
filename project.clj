@@ -11,7 +11,7 @@
                   :checksum :ignore }
                  }
   
-  :extra-files-to-clean ["pom.xml"]                 
+;;  :extra-files-to-clean ["pom.xml"]                 
   
   :dependencies [
                  [com.dcj.util/map "1.0.4"]
