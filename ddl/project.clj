@@ -13,6 +13,11 @@
                  [org.clojure/clojure "1.9.0"]
                  [slingshot "0.12.2"]
                  ]
+
+  :codox {
+          :output-path "resources/doc/api"
+          }
+  
   )
 
 

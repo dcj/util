@@ -14,6 +14,11 @@
                  ;;                                                   org.slf4j/jcl-over-slf4j
                  ;;                                                   org.slf4j/jul-to-slf4j]]
                  ]
+
+  :codox {
+          :output-path "resources/doc/api"
+          }
+  
   )
 
 ;;		 [com.eaio.uuid/uuid "3.2"]

@@ -3,7 +3,13 @@
 ;;  :clean-targets ["pom.xml"] 
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [clj-yaml "0.4.0"]
-		 [clj-ssh "0.5.14"]])
+		 [clj-ssh "0.5.14"]]
+
+  :codox {
+          :output-path "resources/doc/api"
+          }
+
+  )
 
 
 

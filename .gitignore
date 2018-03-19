@@ -7,11 +7,13 @@
 .lein-env
 /checkouts
 /.lein-deps-sum
-/doc
-/.DS_Store
+doc
+.DS_Store
 *.pyc
 target
 /docs
 *.lein-repl-history
+/*/resources/doc/api
+
 
 

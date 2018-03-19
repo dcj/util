@@ -17,6 +17,11 @@
                  [com.dcj.util/uuid "1.0.5"]
                  [cheshire "5.8.0"]
                  ]
+
+  :codox {
+          :output-path "resources/doc/api"
+          }
+
   )
 
 

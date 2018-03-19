@@ -1,12 +1,19 @@
 (ns util.uuid
-  "Utilities for dealing with UUIDs"
+  "Utilities for dealing with UUIDs, WARNING, probably better: https://github.com/danlentz/clj-uuid"
   (:require [clojure.string :as str]
             [slingshot.slingshot :refer [throw+ try+]]
             ;; [datomic.api :as datomic]
             )
   (:import [java.util UUID])
   )
-            
+
+;;
+;; WARNING!!!
+;; Shouldn't we use https://github.com/danlentz/clj-uuid ???
+;; 
+
+
+
 ;; http://johannburkard.de/software/uuid/#maven
 ;;
 ;; [com.eaio.uuid UUID]

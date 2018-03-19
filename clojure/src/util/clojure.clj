@@ -1,6 +1,6 @@
 (ns util.clojure
   "Misc functions to assist with Clojure development"
-  (:use [clojure.tools.macro :only (name-with-attributes)]))
+  (:require [clojure.tools.macro :refer [name-with-attributes)]))
 
 ;; https://gist.github.com/4134522
 ;; https://twitter.com/Baranosky/status/271894356418498560

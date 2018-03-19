@@ -6,7 +6,13 @@
 
   :dependencies [
                  [org.clojure/clojure "1.9.0"]
-                 ])
+                 ]
+
+  :codox {
+          :output-path "resources/doc/api"
+          }
+
+  )
 
 
 
