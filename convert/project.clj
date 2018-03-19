@@ -1,22 +1,27 @@
-(defproject com.dcj.util/convert "1.0.4"
+(defproject com.dcj.util/convert "1.0.5"
   :description "Utilities converting between data types"
 
-  :repositories {"likestream" 
-                 {:url "http://maven.likestream.net/maven2"
-                  :update :always
-                  :checksum :ignore }
-                 }
+  ;; :repositories {"likestream" 
+  ;;                {:url "http://maven.likestream.net/maven2"
+  ;;                 :update :always
+  ;;                 :checksum :ignore }
+  ;;                }
 
-  :aot :all
+  ;; :aot :all
 
-;;  :clean-targets ["pom.xml"] 
+  ;;  :clean-targets ["pom.xml"] 
   
   :dependencies [
-                 [org.clojure/clojure "1.5.1"]
-                 [slingshot "0.10.3"]
-                 [com.dcj.util/uuid "1.0.4"]
-                 [cheshire "5.3.1"]
+                 [org.clojure/clojure "1.9.0"]
+                 [slingshot "0.12.2"]
+                 [com.dcj.util/uuid "1.0.5"]
+                 [cheshire "5.8.0"]
                  ]
+
+  :codox {
+          :output-path "resources/doc/api"
+          }
+
   )
 
 

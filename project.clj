@@ -1,34 +1,35 @@
-(defproject com.dcj/util "1.0.4"
+(defproject com.dcj/util "1.0.5"
   
   :description "Libraries of functions I like to use"
 
   :min-lein-version "2.0.0"
 
-  :repositories {"mvnrepository" "http://mvnrepository.com/"
-                 "likestream" 
-                 {:url "http://maven.likestream.net/maven2"
-                  :update :always
-                  :checksum :ignore }
+  :repositories {"mvnrepository" "https://mvnrepository.com/"
+                 ;; "likestream" 
+                 ;; {:url "http://maven.likestream.net/maven2"
+                 ;;  :update :always
+                 ;;  :checksum :ignore }
                  }
   
 ;;  :extra-files-to-clean ["pom.xml"]                 
   
   :dependencies [
-                 [com.dcj.util/map "1.0.4"]
-                 [com.dcj.util/convert "1.0.4"]
-                 [com.dcj.util/uuid "1.0.4"]
-                 [com.dcj.util/ddl "1.0.4"]
-                 [com.dcj.util/logging "1.0.4"]
-                 [com.dcj.util/phonenumber "1.0.4"]
-                 [com.dcj.util/puppet "1.0.4"]                 
-                 [com.dcj.util/counter "1.0.4"]
-                 [com.dcj.util/ncounter "1.0.4"]
-                 [com.dcj.util/configfile "1.0.4"]                 
-                 [com.dcj.util/time "1.0.4"]
-                 [com.dcj.util/http "1.0.4"]                 
-                 [com.dcj.util/debug "1.0.4"]                 
-                 [com.dcj.util/introspect "1.0.4"]                 
-                 [com.dcj.util/clojure "1.0.4"]                 
+                 [com.dcj.util/map "1.0.5"]
+                 [com.dcj.util/convert "1.0.5"]
+                 [com.dcj.util/uuid "1.0.5"]
+                 [com.dcj.util/ddl "1.0.5"]
+                 [com.dcj.util/logging "1.0.5"]
+                 [com.dcj.util/phonenumber "1.0.5"]
+                 [com.dcj.util/puppet "1.0.5"]                 
+                 [com.dcj.util/counter "1.0.5"]
+                 [com.dcj.util/ncounter "1.0.5"]
+                 [com.dcj.util/configfile "1.0.5"]                 
+                 [com.dcj.util/time "1.0.5"]
+                 [com.dcj.util/http "1.0.5"]                 
+                 [com.dcj.util/debug "1.0.5"]                 
+                 [com.dcj.util/introspect "1.0.5"]                 
+                 [com.dcj.util/clojure "1.0.5"]
+                 [com.dcj.util/facter "1.0.5"]                                  
                  ]
 
   :sub [
@@ -47,6 +48,7 @@
         "puppet"
         "time"
         "uuid"
+        "facter"
         ]
 
   :codox {:sources [
@@ -65,9 +67,10 @@
                     "puppet/src"
                     "time/src"
                     "uuid/src"
+                    "facter/src"
                     ]
 
-          :output-dir "docs/codox"
+          :output-dir "resources/docs/codox"
           }
   )
 

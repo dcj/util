@@ -19,7 +19,7 @@
 (defn create-table-preface
   "Returns string of DDL specifying a SQL CREATE TABLE statement"
   [schema-name table-name]
-  (println-str (str "CREATE TABLE \""
+  (println (str "CREATE TABLE \""
                     schema-name
                     "\".\""
                     table-name
@@ -30,13 +30,13 @@
   ([schema-name table-name]
      (create-table-epilogue schema-name table-name "postgres"))
   ([schema-name table-name owner]
-     (println-str (str ")\nWITH (OIDS=false);\nALTER TABLE \""
-                       schema-name
-                       "\".\""
-                       table-name
-                       "\" OWNER TO \""
-                       owner
-                       "\";"))))
+   (println (str ")\nWITH (OIDS=false);\nALTER TABLE \""
+                 schema-name
+                 "\".\""
+                 table-name
+                 "\" OWNER TO \""
+                 owner
+                 "\";"))))
 
 (defn default-column-datatypes
   "Returns SQL/Postgres data type for the given data-type specifier keyword"
@@ -56,7 +56,11 @@
     :double-precision "double precision"
     :serial "serial"
     :bigserial "bigserial"
-    :timestamp "timestamp(6) NOT NULL DEFAULT now()"
+    :bigserial-pk "bigserial primary key"
+    :timestamp-now "timestamp(6) NOT NULL DEFAULT now()"
+    :timestamp "timestamp"
+    :float4 "float4"
+    :float8 "float8"
     :uuid "uuid"
     :uuid-array "uuid[]"
     :json "json"
@@ -67,19 +71,28 @@
 
 (defn create-table-column
   "Returns SQL/Postgres table column DDL from the given column and data-type specifier keywords"
-    ([format-vector]
-       (create-table-column format-vector nil #'default-column-datatypes))
-    ([format-vector last-char]
-       (create-table-column format-vector last-char #'default-column-datatypes))
-    ([[col format] last-char column-datatypes-fn]
-      (println-str (str "\t" 
-                        (name col) 
-                        " "
-                        (column-datatypes-fn format)
-                        last-char))))
+  ([format-map]
+   (create-table-column format-map nil #'default-column-datatypes))
+  ([format-map last-char]
+   (create-table-column format-map last-char #'default-column-datatypes))
+  ([{:keys [col type] :as format-map} last-char column-datatypes-fn]
+   (println (str "\t" 
+                 (clojure.core/name col) 
+                 " "
+                 (column-datatypes-fn type)
+                 last-char))))
 
 
+(defn create-table
+  [{:keys [schema table owner columns] :as table-spe}]
+  (create-table-preface schema table)
+  (doseq [column columns]
+    (create-table-column column ","))
+  (create-table-epilogue schema table owner))
 
+  
+  
+  
 
 
 
