@@ -1,6 +1,6 @@
 (ns util.ddl
   "SQL DDL utils"
-  (:require [clojure.string :as str]
+  (:require [clojure.string :as string]
             [slingshot.slingshot :refer [throw+ try+]]))
 
 
@@ -30,13 +30,15 @@
   ([schema-name table-name]
      (create-table-epilogue schema-name table-name "postgres"))
   ([schema-name table-name owner]
-   (println (str ")\nWITH (OIDS=false);\nALTER TABLE \""
-                 schema-name
-                 "\".\""
-                 table-name
-                 "\" OWNER TO \""
-                 owner
-                 "\";"))))
+   (println (if owner
+              (str ")\nWITH (OIDS=false);\nALTER TABLE \""
+                   schema-name
+                   "\".\""
+                   table-name
+                   "\" OWNER TO \""
+                   owner
+                   "\";")
+              (str ");")))))
 
 (defn default-column-datatypes
   "Returns SQL/Postgres data type for the given data-type specifier keyword"
@@ -75,16 +77,16 @@
    (create-table-column format-map nil #'default-column-datatypes))
   ([format-map last-char]
    (create-table-column format-map last-char #'default-column-datatypes))
-  ([{:keys [col type] :as format-map} last-char column-datatypes-fn]
+  ([{:keys [column column-data-type] :as format-map} last-char column-datatypes-fn]
    (println (str "\t" 
-                 (clojure.core/name col) 
+                 (clojure.core/name column) 
                  " "
-                 (column-datatypes-fn type)
+                 (column-datatypes-fn column-data-type)
                  last-char))))
 
 
 (defn create-table
-  [{:keys [schema table owner columns] :as table-spe}]
+  [{:keys [schema table owner columns] :as table-spec}]
   (create-table-preface schema table)
   (doseq [column columns]
     (create-table-column column ","))
