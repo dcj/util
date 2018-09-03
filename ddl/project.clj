@@ -1,23 +1,17 @@
-(defproject com.dcj.util/ddl "1.0.5"
-  :description "Utilities for creating SDL DDLs"
+(defproject
 
-  ;; :repositories {"likestream" 
-  ;;                {:url "http://maven.likestream.net/maven2"
-  ;;                 :update :always
-  ;;                 :checksum :ignore }
-  ;;                }
+  com.dcj.util/ddl
 
-  ;;  :clean-targets ["pom.xml"] 
+  "1.0.6-SNAPSHOT"
   
-  :dependencies [
-                 [org.clojure/clojure "1.9.0"]
-                 [slingshot "0.12.2"]
-                 ]
+  :description "Utilities for creating SQL DDLs"
 
-  :codox {
-          :output-path "resources/doc/api"
-          }
+  :clean-targets ["pom.xml"] 
+  
+  :dependencies [[org.clojure/clojure "1.9.0"]
+                 [slingshot "0.12.2"]]
+
+  :codox {:output-path "resources/doc/api"}
   
   )
-
 

@@ -1,4 +1,8 @@
-(defproject com.dcj/util "1.0.5"
+(defproject
+
+  com.dcj/util
+
+  "1.0.6-SNAPSHOT"
   
   :description "Libraries of functions I like to use"
 
@@ -13,27 +17,28 @@
   
 ;;  :extra-files-to-clean ["pom.xml"]                 
   
-  :dependencies [
-                 [com.dcj.util/map "1.0.5"]
-                 [com.dcj.util/convert "1.0.5"]
-                 [com.dcj.util/uuid "1.0.5"]
-                 [com.dcj.util/ddl "1.0.5"]
-                 [com.dcj.util/logging "1.0.5"]
-                 [com.dcj.util/phonenumber "1.0.5"]
-                 [com.dcj.util/puppet "1.0.5"]                 
-                 [com.dcj.util/counter "1.0.5"]
-                 [com.dcj.util/ncounter "1.0.5"]
-                 [com.dcj.util/configfile "1.0.5"]                 
-                 [com.dcj.util/time "1.0.5"]
-                 [com.dcj.util/http "1.0.5"]                 
-                 [com.dcj.util/debug "1.0.5"]                 
-                 [com.dcj.util/introspect "1.0.5"]                 
-                 [com.dcj.util/clojure "1.0.5"]
-                 [com.dcj.util/facter "1.0.5"]                                  
-                 ]
+  :dependencies [[com.dcj.util/map "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/convert "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/uuid "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/ddl "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/logging "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/phonenumber "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/puppet "1.0.6-SNAPSHOT"]                 
+                 [com.dcj.util/counter "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/ncounter "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/configfile "1.0.6-SNAPSHOT"]                 
+                 [com.dcj.util/time "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/http "1.0.6-SNAPSHOT"]                 
+                 [com.dcj.util/debug "1.0.6-SNAPSHOT"]                 
+                 [com.dcj.util/introspect "1.0.6-SNAPSHOT"]                 
+                 [com.dcj.util/clojure "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/facter "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/edn "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/json "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/yaml "1.0.6-SNAPSHOT"]
+                 [com.dcj.util/config "1.0.6-SNAPSHOT"]]
 
-  :sub [
-        "clojure"
+  :sub ["clojure"
         "configfile"
         "convert"
         "ddl"
@@ -49,10 +54,12 @@
         "time"
         "uuid"
         "facter"
-        ]
+        "edn"
+        "json"
+        "yaml"
+        "config"]
 
-  :codox {:sources [
-                    "clojure/src"
+  :codox {:sources ["clojure/src"
                     "configfile/src"
                     "convert/src"
                     "ddl/src"
@@ -68,9 +75,11 @@
                     "time/src"
                     "uuid/src"
                     "facter/src"
-                    ]
+                    "edn/src"
+                    "json/src"
+                    "yaml/src"
+                    "config/src"]
 
-          :output-dir "resources/docs/codox"
-          }
+          :output-dir "resources/doc/api"}
   )
 

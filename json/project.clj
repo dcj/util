@@ -4,11 +4,11 @@
 
 (defproject
 
-  com.dcj.util/http
+  com.dcj.util/json
 
   "1.0.6-SNAPSHOT"
 
-  :description "HTTP utilities"
+  :description "JSON conversion and I/O utilities"
 
   :repositories [["snapshots"
                   {:url "http://artifactory.dc.drivescale.com:8081/artifactory/libs-snapshot-local"
@@ -22,15 +22,9 @@
   :clean-targets ["pom.xml"]
 
   :dependencies [[org.clojure/clojure "1.9.0"]
-                 [slingshot "0.12.2"]]
-  
+                 [cheshire "5.8.0"]
+                 [inet.data "0.5.7"]]
+
   :codox {:output-path "resources/doc/api"}
 
   )
-
-
-
-
-
-
-

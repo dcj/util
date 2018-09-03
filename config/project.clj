@@ -4,11 +4,9 @@
 
 (defproject
 
-  com.dcj.util/http
+  com.dcj.util/config
 
   "1.0.6-SNAPSHOT"
-
-  :description "HTTP utilities"
 
   :repositories [["snapshots"
                   {:url "http://artifactory.dc.drivescale.com:8081/artifactory/libs-snapshot-local"
@@ -19,10 +17,13 @@
                    :username "jenkins"
                    :password "HodorHodor"}]]
 
-  :clean-targets ["pom.xml"]
+  :description "Read configuration via environ"
+  
+  :clean-targets ["pom.xml"] 
 
   :dependencies [[org.clojure/clojure "1.9.0"]
-                 [slingshot "0.12.2"]]
+                 [com.dcj.util/edn "1.0.6-SNAPSHOT"]
+                 [environ "1.1.0"]]
   
   :codox {:output-path "resources/doc/api"}
 
