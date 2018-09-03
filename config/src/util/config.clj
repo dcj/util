@@ -11,12 +11,17 @@
       nil?
       not))
 
-(defn ^:private str->boolean
-  "Converts strings \"true\" and \"false\" to boolean, else throws exception"
+(defn ^:private str-t-f->boolean
+  "Converts strings \"true\" and \"false\" to boolean, else returns input"
   [s]
-  (case s
-    "true" true
-    "false" false))
+  (if-not (string? s)
+    s
+    (case s
+      "true" true
+      "TRUE" true
+      "false" false
+      "FALSE" false
+      s)))
 
 (defn get-env-var
   "environ/env with not-found if env-var not defined"
@@ -24,7 +29,7 @@
    (get-env-var env-var nil))
   ([env-var not-found]
    (if (env-var-defined? env-var)
-     (-> env-var env str->boolean)
+     (-> env-var env str-t-f->boolean)
      not-found)))
 
 (defn get-edn-file-from-env-var

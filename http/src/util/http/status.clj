@@ -6,7 +6,7 @@
   "Returns most significant digit of http-response-code, assumes 3 digit response codes"
   [http-response-code]
   (quot http-response-code 100))
-  
+
 (defn in-range?
   "Returns true if the given HTTP-response-code begins with digit, an Integer."
   [digit http-response-code]
@@ -160,6 +160,5 @@
 (defn get-code-name-description
   "Returns map containing :code :name :description"
   [code]
-  (assoc (get code->name-description-map code)
+  (assoc (get code->name-description-map code) ;; TODO modify map above to include :code key so don't have to do this
          :code code))
-

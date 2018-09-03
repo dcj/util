@@ -19,11 +19,17 @@
 (defn create-table-preface
   "Returns string of DDL specifying a SQL CREATE TABLE statement"
   [schema-name table-name]
-  (println (str "CREATE TABLE \""
+  (println (str "CREATE TABLE "
                     schema-name
-                    "\".\""
+                    "."
                     table-name
-                    "\" (")))
+                    " (")))
+
+  ;; (println (str "CREATE TABLE \""
+  ;;                   schema-name
+  ;;                   "\".\""
+  ;;                   table-name
+  ;;                   "\" (")))
 
 (defn create-table-epilogue
   "Returns string of DDL terminating a SQL CREATE TABLE statement"
@@ -57,10 +63,17 @@
     :real "real"
     :double-precision "double precision"
     :serial "serial"
+    :serial-pk "serial primary key"
     :bigserial "bigserial"
     :bigserial-pk "bigserial primary key"
     :timestamp-now "timestamp(6) NOT NULL DEFAULT now()"
     :timestamp "timestamp"
+    :varchar "varchar"
+    :pk "primary key"
+    :primary-key "primary key"
+    :!null "NOT NULL"
+    :not-null "NOT NULL"
+    :date "date"
     :float4 "float4"
     :float8 "float8"
     :uuid "uuid"
