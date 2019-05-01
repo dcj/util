@@ -6,7 +6,7 @@
 
   com.dcj.util/json
 
-  "1.0.6-SNAPSHOT"
+  "1.0.7-SNAPSHOT"
 
   :description "JSON conversion and I/O utilities"
 
@@ -23,7 +23,8 @@
 
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [cheshire "5.8.0"]
-                 [inet.data "0.5.7"]]
+                 ;; [inet.data "0.5.7"] Not compatible with JDK 11 for now
+                 ]
 
   :codox {:output-path "resources/doc/api"}
 

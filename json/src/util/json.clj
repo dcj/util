@@ -1,7 +1,7 @@
 (ns util.json
   "JSON conversion and I/O"
-  (:require [inet.data.ip :as ip]
-            [inet.data.dns :as dns]
+  (:require ;; [inet.data.ip :as ip]
+            ;; [inet.data.dns :as dns]
             [cheshire.core :as cheshire]
             [cheshire.generate]
             [clojure.java.io :as io]))
@@ -23,20 +23,20 @@
          slurp
          (->edn keywordize?)))))
 
-(cheshire.generate/add-encoder
- inet.data.dns.DNSDomain
- (fn [c jsonGenerator]
-   (.writeString jsonGenerator (str c))))
+;; (cheshire.generate/add-encoder
+;;  inet.data.dns.DNSDomain
+;;  (fn [c jsonGenerator]
+;;    (.writeString jsonGenerator (str c))))
 
-(cheshire.generate/add-encoder
- inet.data.ip.IPAddress
- (fn [c jsonGenerator]
-   (.writeString jsonGenerator (str c))))
+;; (cheshire.generate/add-encoder
+;;  inet.data.ip.IPAddress
+;;  (fn [c jsonGenerator]
+;;    (.writeString jsonGenerator (str c))))
 
-(cheshire.generate/add-encoder
- inet.data.ip.IPNetwork
- (fn [c jsonGenerator]
-   (.writeString jsonGenerator (str c))))
+;; (cheshire.generate/add-encoder
+;;  inet.data.ip.IPNetwork
+;;  (fn [c jsonGenerator]
+;;    (.writeString jsonGenerator (str c))))
 
 (defn ->json
   "Returns JSON string, prettyprinted by default, set optional 2nd arg to false to forego prettyprinting"
