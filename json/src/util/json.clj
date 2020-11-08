@@ -1,10 +1,14 @@
 (ns util.json
   "JSON conversion and I/O"
-  (:require ;; [inet.data.ip :as ip]
-            ;; [inet.data.dns :as dns]
-            [cheshire.core :as cheshire]
-            [cheshire.generate]
-            [clojure.java.io :as io]))
+  (:require
+   [inet.data.ip :as ip]
+   [inet.data.dns :as dns]
+   [tick.alpha.api :as t]
+   [cheshire.core :as cheshire]
+   [cheshire.generate]
+   [clojure.java.io :as io])
+  (:import com.fasterxml.jackson.core.JsonGenerator))
+
 
 (defn ->edn
   "Returns parsed JSON as EDN, keywordized by default, set optional 2nd arg to false for string keys"
@@ -12,6 +16,7 @@
    (->edn json true))
   ([json keywordize?]
    (cheshire/parse-string json keywordize?)))
+
 
 (defn file->edn
   "Reads file, returns parsed JSON as EDN, keywordized by default, set optional 2nd arg to false for string keys"
@@ -23,20 +28,36 @@
          slurp
          (->edn keywordize?)))))
 
-;; (cheshire.generate/add-encoder
-;;  inet.data.dns.DNSDomain
-;;  (fn [c jsonGenerator]
-;;    (.writeString jsonGenerator (str c))))
 
-;; (cheshire.generate/add-encoder
-;;  inet.data.ip.IPAddress
-;;  (fn [c jsonGenerator]
-;;    (.writeString jsonGenerator (str c))))
+(cheshire.generate/add-encoder
+ java.time.ZonedDateTime
+ (fn [^java.time.ZonedDateTime zdt ^JsonGenerator jg]
+   (.writeString jg (-> zdt t/instant str))))
 
-;; (cheshire.generate/add-encoder
-;;  inet.data.ip.IPNetwork
-;;  (fn [c jsonGenerator]
-;;    (.writeString jsonGenerator (str c))))
+
+(cheshire.generate/add-encoder
+ java.time.LocalDate
+ (fn [^java.time.LocalDate date ^JsonGenerator jg]
+   (.writeString jg (str date))))
+
+
+(cheshire.generate/add-encoder
+ inet.data.dns.DNSDomain
+ (fn [c jsonGenerator]
+   (.writeString jsonGenerator (str c))))
+
+
+(cheshire.generate/add-encoder
+ inet.data.ip.IPAddress
+ (fn [c jsonGenerator]
+   (.writeString jsonGenerator (str c))))
+
+
+(cheshire.generate/add-encoder
+ inet.data.ip.IPNetwork
+ (fn [c jsonGenerator]
+   (.writeString jsonGenerator (str c))))
+
 
 (defn ->json
   "Returns JSON string, prettyprinted by default, set optional 2nd arg to false to forego prettyprinting"
@@ -44,6 +65,7 @@
    (->json true edn))
   ([pretty? edn]
    (cheshire/generate-string edn {:pretty pretty?})))
+
 
 (defn ->file
   "Writes JSON to file, prettyprinted by default, set optional 3rd arg to false to forego prettyprinting"
