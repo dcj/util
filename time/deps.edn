@@ -1,0 +1,35 @@
+{:paths ["src" "resources"]
+
+ :mvn/repos {"acn-snapshots" {:url "https://repo.deps.co/aircraft-noise/snapshots"}
+             "acn-releases"  {:url "https://repo.deps.co/aircraft-noise/releases"}}
+
+ :deps
+ {org.clojure/clojure {:mvn/version "1.10.3"}
+  tick/tick           {:mvn/version "0.4.31-alpha"}
+  }
+
+ :aliases
+ {:mvn/artifact-id time
+  :mvn/group-id    com.dcj.util
+  :mvn/version     "1.1.0-SNAPSHOT"
+  :jar/file-name   "time.jar"
+
+  :jar {:replace-deps
+        {com.github.seancorfield/depstar {:mvn/version "2.0.206"}}
+        :exec-fn hf.depstar/jar
+        :exec-args {:jar         :jar/file-name
+                    :artifact-id :mvn/artifact-id
+                    :group-id    :mvn/group-id
+                    :version     :mvn/version
+                    :sync-pom    true}}
+
+  :deploy {:extra-deps {com.dcj/deps-deploy
+                        {:git/url "https://github.com/dcj/deps-deploy.git"
+                         :sha "cf0f5e612eab04789c757a98f544eb8dea61a45b"}}
+           :exec-fn deps-deploy.deps-deploy/deploy
+           :exec-args {:installer :remote
+                       :sign-releases? false
+                       :artifact :jar/file-name
+                       :repository "acn-snapshots"}}
+  }
+ }
