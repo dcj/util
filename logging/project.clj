@@ -11,6 +11,11 @@
 
   :clean-targets ["pom.xml"]
 
+  :repositories {"snapshots"
+                 {:url "https://repo.deps.co/aircraft-noise/snapshots"
+                  :username :env/deps_key
+                  :password :env/deps_secret}}
+
   :codox {
           :output-path "resources/doc/api/util/logging"
           }

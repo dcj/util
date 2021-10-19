@@ -5,13 +5,13 @@
 
  :deps
  {org.clojure/clojure {:mvn/version "1.10.3"}
-  tick/tick           {:mvn/version "0.4.31-alpha"}
+  tick/tick           {:mvn/version "0.5.0-RC3"}
   }
 
  :aliases
  {:mvn/artifact-id time
   :mvn/group-id    com.dcj.util
-  :mvn/version     "1.1.0-SNAPSHOT"
+  :mvn/version     "1.2.0-SNAPSHOT"
   :jar/file-name   "time.jar"
 
   :jar {:replace-deps
